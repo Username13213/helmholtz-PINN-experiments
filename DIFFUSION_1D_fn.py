@@ -212,7 +212,8 @@ def plot_results(x_np, u_exact, u_total_pred, p_pred, q_pred, hist, k, n_d, x_a,
 
 
 # Main loop ======================================================================
-k_list = [5, 10, 15, 20, 30, 40, 50]
+# k_list = [5, 10, 15, 20, 30, 40, 50]
+k_list = [50]
 n_d = 1.5
 x_a, x_b, L = 0.35, 0.65, 1.0
 Nx = 2000 
