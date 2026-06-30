@@ -20,8 +20,11 @@ All models use a **SIREN** (*Sinusoidal Representation Network*) architecture, w
 
 **Physical setup.** An incident plane wave propagates from left to right and hits a dielectric interface with refractive index `n_d = 1.5`, located between `x = 0.35` and `x = 0.65`. At each interface, part of the wave is reflected and part is transmitted.
 
+The total field satisfies the heterogeneous Helmholtz equation:
 
-The total field is split into the known incident field and the unknown scattered field. The PINN learns only the scattered field, decomposed into real and imaginary parts.
+$$\frac{\partial^2 u}{\partial x^2} + k^2 n^2(x)\, u = 0$$
+
+where $n(x) = n_d$ inside the slab and $n(x) = 1$ outside. The total field is split into the known incident field and the unknown scattered field. The PINN learns only the scattered field, decomposed into real and imaginary parts.
 
 **Results:**
 
@@ -37,7 +40,13 @@ The total field is split into the known incident field and the unknown scattered
 
 ### `HELM_PINN_1D.py` — 1D Helmholtz with a localized source
 
-**Physical setup.** The stationary Helmholtz equation on a segment, domain [0, 1].
+**Physical setup.** The stationary Helmholtz equation on a segment, domain $[0, 1]$:
+
+$$\frac{\partial^2 u}{\partial x^2} + k^2 u = f(x), \qquad u(0) = u(1) = 0$$
+
+where the source term is a Gaussian centered at $x = 0.5$:
+
+$$f(x) = \exp\!\left(-\frac{(x - 0.5)^2}{2\sigma^2}\right)$$
 
 **Results:**
 
@@ -53,8 +62,13 @@ The total field is split into the known incident field and the unknown scattered
 
 ### `HELM_PINN_2D.py` — 2D Helmholtz equation
 
-**Physical setup.** Extension to a 2D domain.
+**Physical setup.** Extension to a 2D domain, solving on the unit square $[0,1]^2$:
 
+$$\Delta u + k^2 u = f(x, y), \qquad u\big|_{\partial\Omega} = 0$$
+
+where the source term is a Gaussian centered at $(0.5,\, 0.5)$:
+
+$$f(x, y) = \exp\!\left(-\frac{(x-0.5)^2 + (y-0.5)^2}{2\sigma^2}\right)$$
 
 **Results:**
 
@@ -65,8 +79,6 @@ The total field is split into the known incident field and the unknown scattered
 | k = 30 | k = 40 | k = 50 |
 |:---:|:---:|:---:|
 | ![k30](HELM_PINN_2D_results/helmholtz_2d_k_30.png) | ![k40](HELM_PINN_2D_results/helmholtz_2d_k_40.png) | ![k50](HELM_PINN_2D_results/helmholtz_2d_k_50.png) |
-
-Each panel shows: the finite-difference reference, the PINN prediction, the pointwise squared error, and the training loss curve.
 
 ---
 
@@ -79,4 +91,3 @@ scipy
 matplotlib
 tqdm
 ```
-
