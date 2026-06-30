@@ -42,11 +42,11 @@ where $n(x) = n_d$ inside the slab and $n(x) = 1$ outside. The total field is sp
 
 **Physical setup.** The stationary Helmholtz equation on a segment, domain $[0, 1]$:
 
-$$\frac{\partial^2 u}{\partial x^2} + k^2 u = f(x), \qquad u(0) = u(1) = 0$$
+$$\frac{\partial^2 u}{\partial x^2} + k^2 u = f(x),
 
 where the source term is a Gaussian centered at $x = 0.5$:
 
-$$f(x) = \exp\!\left(-\frac{(x - 0.5)^2}{2\sigma^2}\right)$$
+$$f(x) = \exp\left(-\frac{(x - 0.5)^2}{2\sigma^2}\right)$$
 
 **Results:**
 
@@ -64,11 +64,11 @@ $$f(x) = \exp\!\left(-\frac{(x - 0.5)^2}{2\sigma^2}\right)$$
 
 **Physical setup.** Extension to a 2D domain, solving on the unit square $[0,1]^2$:
 
-$$\Delta u + k^2 u = f(x, y), \qquad u\big|_{\partial\Omega} = 0$$
+$$\Delta u + k^2 u = f(x, y),
 
 where the source term is a Gaussian centered at $(0.5,\, 0.5)$:
 
-$$f(x, y) = \exp\!\left(-\frac{(x-0.5)^2 + (y-0.5)^2}{2\sigma^2}\right)$$
+$$f(x, y) = \exp\left(-\frac{(x-0.5)^2 + (y-0.5)^2}{2\sigma^2}\right)$$
 
 **Results:**
 
